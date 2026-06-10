@@ -1,0 +1,59 @@
+site_name: Alpha Engine Tutorial
+
+plugins:
+  - offline
+  - search
+  - print-site
+
+nav:
+  - index.md
+  - project_setup.md
+  - primitive_types.md
+  - coordinate_systems.md 
+  - rendering_sprites.md
+  - rendering_text.md
+  - spritesheets.md
+  - input.md
+  - playing_audio.md
+  - camera_system.md
+
+theme:
+  name: material
+  font: 
+    text: Roboto
+  features:
+    - navigation.expand
+    - content.code.copy
+    - content.code.select
+
+  palette: 
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - toc:
+      toc_depth: 2
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+    
+
+extra_javascript:
+  - js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

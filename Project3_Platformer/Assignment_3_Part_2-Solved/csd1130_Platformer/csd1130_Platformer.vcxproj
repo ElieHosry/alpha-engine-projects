@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A3BAEC71-F1B8-4A73-A1DB-AD0E92F9541D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>CS230_Platformer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>csd1130_Platformer</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>$(ProjectName)D</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\bin\$(Configuration)-$(Platform)\</OutDir>
+    <IncludePath>..\..\..\alpha_engine\include;include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>..\..\..\alpha_engine\bin\engine\x64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <IntDir>..\..\.tmp\$(Configuration)-$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\bin\$(Configuration)-$(Platform)\</OutDir>
+    <IncludePath>..\..\..\alpha_engine\include;include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>..\..\..\alpha_engine\bin\engine\x64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <IntDir>..\..\.tmp\$(Configuration)-$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;user32.lib;comctl32.lib;shell32.lib;gdi32.lib;advapi32.lib;Alpha_EngineD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "..\Resources\*" "$(OutDir)..\Resources\" /s  /r /y /q
+xcopy "$(SolutionDir)..\..\extern\freetype\lib\freetype.dll" "$(OutDir)" /s /r /y /q
+xcopy "$(SolutionDir)..\..\extern\fmod\lib\fmodL.dll" "$(OutDir)" /s /r /y /q
+xcopy "$(SolutionDir)..\..\bin\engine\x64\Alpha_EngineD.dll" "$(OutDir)" /s /r /y /q
+if exist "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;user32.lib;comctl32.lib;shell32.lib;gdi32.lib;advapi32.lib;Alpha_Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "..\Resources\*" "$(OutDir)..\Resources\" /s  /r /y /q
+xcopy "$(SolutionDir)..\..\extern\freetype\lib\freetype.dll" "$(OutDir)" /s /r /y /q
+xcopy "$(SolutionDir)..\..\extern\fmod\lib\fmod.dll" "$(OutDir)" /s /r /y /q
+xcopy "$(SolutionDir)..\..\bin\engine\x64\Alpha_Engine.dll" "$(OutDir)" /s /r /y /q
+if exist "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\AABB_Collision.h" />
+    <ClInclude Include="Include\GameStateConstants.h" />
+    <ClInclude Include="Include\GameStateList.h" />
+    <ClInclude Include="Include\GameStateMgr.h" />
+    <ClInclude Include="Include\GameState_MainMenu.h" />
+    <ClInclude Include="Include\GameState_Platform.h" />
+    <ClInclude Include="Include\GameState_Platform_Extension.h" />
+    <ClInclude Include="Include\Main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\AABB_Collision.cpp" />
+    <ClCompile Include="Src\GameStateMgr.cpp" />
+    <ClCompile Include="Src\GameState_MainMenu.cpp" />
+    <ClCompile Include="Src\GameState_Platform.cpp" />
+    <ClCompile Include="Src\GameState_Platform_Extension.cpp" />
+    <ClCompile Include="Src\Main.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

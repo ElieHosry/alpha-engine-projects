@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\src\AEFrameRateController.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AEGraphics.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AEInput.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AELineSegment2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AEMath.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AEMtx33.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AESystem.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AEUtil.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AEVec2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Matrix4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Point4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Vector4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\extern\glew\glew.c">
+      <Filter>Extern\glew</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AEAudio.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\3DPipelineTools.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\AEEngine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AEExport.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AEFrameRateController.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AEGraphics.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AEInput.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AELineSegment2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AEMath.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AEMtx33.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AESystem.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AETypes.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AEUtil.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AEVec2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\extern\glew\GL\glew.h">
+      <Filter>Extern\glew\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\extern\glew\GL\glxew.h">
+      <Filter>Extern\glew\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\extern\glew\GL\wglew.h">
+      <Filter>Extern\glew\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\extern\glew\GL\eglew.h">
+      <Filter>Extern\glew\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\AEAudio.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Matrix4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Point4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Vector4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\3DPipelineTools.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Math">
+      <UniqueIdentifier>{e3630bd2-7362-4428-a532-6bb61c53fea8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{ef3bef0e-7d77-4b0e-8f14-c91dff7cef85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{75c6e750-4254-4a82-ae0a-cb9c4f1eeddd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extern">
+      <UniqueIdentifier>{1ec0d075-0ca7-4720-8f16-4f777cf8dc55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extern\glew">
+      <UniqueIdentifier>{55eb2183-ba3a-45a0-be24-cdf7acc27e94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extern\glew\GL">
+      <UniqueIdentifier>{f4ad6f93-ff28-499a-8751-034327489bca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{0c92f451-2ada-4e22-8bd8-71ed1d9c6aaf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

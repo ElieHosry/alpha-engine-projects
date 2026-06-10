@@ -1,0 +1,36 @@
+/*********************************************************************************************************************************/
+/*!
+\par           Project: Alpha Engine
+\file           AEDoxygen_mainpage.txt
+
+\author      Ng Cheng Lai (chenglai.ng\@digipen.edu)
+\date         December 12, 2013
+
+\brief         Text file to generate the mainpage for the doxygen documentation.
+
+\copyright  Copyright (C) 2013 DigiPen Institute of Technology. Reproduction 
+                or disclosure of this file or its contents without the prior 
+                written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*********************************************************************************************************************************/
+
+/*********************************************************************************************************************************/
+/*! 
+    <!---------------------------------------------------------------------------------------------------------------------------->
+    <!--use default title-->
+    \mainpage
+    <!---------------------------------------------------------------------------------------------------------------------------->
+    <!--introduction section-->
+    \section    intro_sec Introduction
+
+    Welcome to the Alpha Engine documentation!
+
+    If you haven't already, it is highly recommended that check out Alpha Engine's Tutorial first.
+
+    If you are here to browse documentation for the first time, you might want to get started by looking at [all the functions](globals_func.html) first and work your way from there.
+
+    Otherwise, have fun using Alpha Engine! :)
+    
+
+*/
+/*********************************************************************************************************************************/
