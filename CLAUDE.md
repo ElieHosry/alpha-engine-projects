@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A C++ real-time 2D game engine (`alpha_engine/`) and a platformer game built on it (`Project3_Platformer/`). The same source compiles to **two targets**: native Windows (Visual Studio) and **WebAssembly** (Emscripten). Read `HANDOFF.md` first; `docs/ARCHITECTURE.md` is the full architecture (SAD) and `docs/VR_3D_REWORK_PLAN.md` scopes a possible WebXR effort.
+A C++ real-time 2D game engine (`alpha_engine/`) and a platformer game built on it (`Project3_Platformer/`). The same source compiles to **two targets**: native Windows (Visual Studio) and **WebAssembly** (Emscripten).
+
+This file is the operating manual (commands, rules, architecture, gotchas). For project **status and history** — what's done, what's open, and why decisions were made — see [`HANDOFF.md`](HANDOFF.md). The full architecture write-up is [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) (SAD); a possible WebXR effort is scoped in [`docs/VR_3D_REWORK_PLAN.md`](docs/VR_3D_REWORK_PLAN.md).
 
 ## The one rule that governs everything
 
