@@ -41,6 +41,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <!-- Resolve alpha_engine root from this vcxproj's location, works with or without a solution -->
+  <PropertyGroup>
+    <AERoot>$(MSBuildProjectDirectory)\..\..\..\alpha_engine\</AERoot>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName)D</TargetName>
     <LinkIncremental>true</LinkIncremental>
@@ -74,10 +78,10 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy "..\Resources\*" "$(OutDir)..\Resources\" /s  /r /y /q
-xcopy "$(SolutionDir)..\..\extern\freetype\lib\freetype.dll" "$(OutDir)" /s /r /y /q
-xcopy "$(SolutionDir)..\..\extern\fmod\lib\fmodL.dll" "$(OutDir)" /s /r /y /q
-xcopy "$(SolutionDir)..\..\bin\engine\x64\Alpha_EngineD.dll" "$(OutDir)" /s /r /y /q
-if exist "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" "$(OutDir)"</Command>
+xcopy "$(AERoot)extern\freetype\lib\freetype.dll" "$(OutDir)" /s /r /y /q
+xcopy "$(AERoot)extern\fmod\lib\fmodL.dll" "$(OutDir)" /s /r /y /q
+xcopy "$(AERoot)bin\engine\x64\Alpha_EngineD.dll" "$(OutDir)" /s /r /y /q
+if exist "$(AERoot)extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(AERoot)extern\SDL2\lib\x64\SDL2.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -102,10 +106,10 @@ if exist "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(SolutionD
     </Link>
     <PostBuildEvent>
       <Command>xcopy "..\Resources\*" "$(OutDir)..\Resources\" /s  /r /y /q
-xcopy "$(SolutionDir)..\..\extern\freetype\lib\freetype.dll" "$(OutDir)" /s /r /y /q
-xcopy "$(SolutionDir)..\..\extern\fmod\lib\fmod.dll" "$(OutDir)" /s /r /y /q
-xcopy "$(SolutionDir)..\..\bin\engine\x64\Alpha_Engine.dll" "$(OutDir)" /s /r /y /q
-if exist "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" "$(OutDir)"</Command>
+xcopy "$(AERoot)extern\freetype\lib\freetype.dll" "$(OutDir)" /s /r /y /q
+xcopy "$(AERoot)extern\fmod\lib\fmod.dll" "$(OutDir)" /s /r /y /q
+xcopy "$(AERoot)bin\engine\x64\Alpha_Engine.dll" "$(OutDir)" /s /r /y /q
+if exist "$(AERoot)extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(AERoot)extern\SDL2\lib\x64\SDL2.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -125,6 +129,13 @@ if exist "$(SolutionDir)..\..\extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(SolutionD
     <ClCompile Include="Src\GameState_Platform.cpp" />
     <ClCompile Include="Src\GameState_Platform_Extension.cpp" />
     <ClCompile Include="Src\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\alpha_engine\build\mvs2022\alpha_engine.vcxproj">
+      <Project>{ff4da28e-ccad-4403-b40d-635c25a11057}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
