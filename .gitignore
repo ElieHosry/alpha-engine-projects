@@ -16,6 +16,7 @@
 *.tlog
 .tmp
 bin/
+tmp/
 deploy/
 Debug/
 Release/
