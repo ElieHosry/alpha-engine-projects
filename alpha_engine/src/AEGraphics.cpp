@@ -1431,6 +1431,10 @@ AE_API AEGfxTexture*	AEGfxTextureLoad(const char* pFileName)
 			glBindTexture(GL_TEXTURE_2D, pTexture->mpSurface->mBufferID);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+			// WebGL 1 requires CLAMP_TO_EDGE for NPOT textures (e.g. 505x122 logo).
+			// Safe to set unconditionally — no effect on POT textures.
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, rgba->w, rgba->h, 0,
 				GL_RGBA, GL_UNSIGNED_BYTE, rgba->pixels);
