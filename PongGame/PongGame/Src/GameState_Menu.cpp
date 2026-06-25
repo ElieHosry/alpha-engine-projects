@@ -7,10 +7,13 @@ extern "C" {
 }
 #endif
 
+static bool sInputReady = false;
+
 void GameState_MenuLoad()   {}
 
 void GameState_MenuInit()
 {
+    sInputReady = false;  // skip first frame so held keys from prior state don't fire
     AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
 #if defined(__EMSCRIPTEN__)
     EM_ASM(
@@ -22,6 +25,8 @@ void GameState_MenuInit()
 
 void GameState_MenuUpdate()
 {
+    if (!sInputReady) { sInputReady = true; return; }
+
     if (AEInputCheckTriggered(AEVK_ESCAPE))
     {
         gGameStateNext = GS_QUIT;
