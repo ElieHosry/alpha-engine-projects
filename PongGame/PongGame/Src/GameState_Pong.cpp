@@ -3,6 +3,13 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
+#if defined(__EMSCRIPTEN__)
+#include <emscripten.h>
+static float sPlayerTargetY = 0.0f;
+extern "C" {
+    EMSCRIPTEN_KEEPALIVE void SetPlayerTargetY(float y) { sPlayerTargetY = y; }
+}
+#endif
 
 static const float PADDLE_HALF_W  =  8.0f;
 static const float PADDLE_HALF_H  = 50.0f;
@@ -91,6 +98,9 @@ void GameState_PongInit()
     sBounceCount = 0;
     sPongWinner  = PONG_WINNER_NONE;
     AEParticleClear();
+#if defined(__EMSCRIPTEN__)
+    sPlayerTargetY = 0.0f;
+#endif
 }
 
 void GameState_PongUpdate()
@@ -106,12 +116,22 @@ void GameState_PongUpdate()
     const float winMaxY = AEGfxGetWinMaxY();
 
     // -------------------------------------------------------------------------
-    // Left paddle — player input (W = up, S = down)
+    // Left paddle — player input (W/Up = up, S/Down = down; touch on web)
     // -------------------------------------------------------------------------
     if (AEInputCheckCurr(AEVK_W) || AEInputCheckCurr(AEVK_UP))
         sPaddleL.pos.y += PLAYER_SPEED * dt;
     if (AEInputCheckCurr(AEVK_S) || AEInputCheckCurr(AEVK_DOWN))
         sPaddleL.pos.y -= PLAYER_SPEED * dt;
+#if defined(__EMSCRIPTEN__)
+    // Touch: move paddle toward the finger's Y position (game-world coordinates).
+    {
+        float tdiff = sPlayerTargetY - sPaddleL.pos.y;
+        if (fabsf(tdiff) > 1.0f)
+            sPaddleL.pos.y += AEClamp(tdiff, -PLAYER_SPEED * dt, PLAYER_SPEED * dt);
+        else
+            sPaddleL.pos.y = sPlayerTargetY;
+    }
+#endif
 
     // Clamp to screen
     float paddleMaxY = winMaxY - sPaddleL.halfH;

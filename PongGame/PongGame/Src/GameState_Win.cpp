@@ -2,6 +2,12 @@
 #include "GameState_Win.h"
 #include "GameState_Pong.h"
 #include "AEParticle.h"
+#if defined(__EMSCRIPTEN__)
+#include <emscripten.h>
+extern "C" {
+    EMSCRIPTEN_KEEPALIVE void DoRestart() { gGameStateNext = GS_PONG; }
+}
+#endif
 
 static PongWinner sWinner = PONG_WINNER_NONE;
 
@@ -16,6 +22,12 @@ void GameState_WinInit()
 {
     sWinner = PongGetWinner();
     // Deliberately NOT calling PongInit — we keep the frozen paddle/ball positions.
+#if defined(__EMSCRIPTEN__)
+    EM_ASM(
+        var btn = document.getElementById('btn-restart');
+        if (btn) btn.style.display = 'block';
+    );
+#endif
 }
 
 void GameState_WinUpdate()
@@ -39,7 +51,15 @@ void GameState_WinDraw()
     AEGfxPrint(gFontId, "Press R to restart",            -0.22f, -0.88f, 1.0f, 0.6f, 0.6f, 0.6f, 1.0f);
 }
 
-void GameState_WinFree()   {}
+void GameState_WinFree()
+{
+#if defined(__EMSCRIPTEN__)
+    EM_ASM(
+        var btn = document.getElementById('btn-restart');
+        if (btn) btn.style.display = 'none';
+    );
+#endif
+}
 
 void GameState_WinUnload()
 {

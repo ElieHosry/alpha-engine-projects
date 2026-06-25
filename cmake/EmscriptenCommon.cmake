@@ -44,6 +44,7 @@ target_link_options(ae_web_common INTERFACE
   # --- Runtime --------------------------------------------------------------
   "-sALLOW_MEMORY_GROWTH=1"
   "-sEXIT_RUNTIME=0"
+  "-sEXPORTED_RUNTIME_METHODS=ccall"
 
   # --- Debug-only aids ------------------------------------------------------
   "$<$<CONFIG:Debug>:-sASSERTIONS=1>"
