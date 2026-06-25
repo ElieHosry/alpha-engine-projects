@@ -7,7 +7,9 @@ enum
 
 	// Reserved — do not change order
 	GS_RESTART,
-	GS_QUIT
+	GS_QUIT,
+
+	GS_WIN
 };
 
 #endif // PONG_GAMESTATELIST_H_

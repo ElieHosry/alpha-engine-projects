@@ -38,6 +38,9 @@ inline bool AABBOverlap(const AABB& a, const AABB& b)
         && a.maxY > b.minY && a.minY < b.maxY;
 }
 
+enum PongWinner { PONG_WINNER_NONE = 0, PONG_WINNER_PLAYER, PONG_WINNER_NPC };
+PongWinner PongGetWinner();
+
 void GameState_PongLoad();
 void GameState_PongInit();
 void GameState_PongUpdate();

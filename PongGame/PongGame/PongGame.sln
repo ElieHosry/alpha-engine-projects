@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.10.35013.160
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "alpha_engine", "..\..\alpha_engine\build\mvs2022\alpha_engine.vcxproj", "{FF4DA28E-CCAD-4403-B40D-635C25A11057}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "csd1130_Platformer", "CSD1130_Platformer\CSD1130_Platformer.vcxproj", "{A3BAEC71-F1B8-4A73-A1DB-AD0E92F9541D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PongGame", "PongGame.vcxproj", "{955D0A3F-9782-4138-AAC4-908623F8CDA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,15 +17,12 @@ Global
 		{FF4DA28E-CCAD-4403-B40D-635C25A11057}.Debug|x64.Build.0 = Debug|x64
 		{FF4DA28E-CCAD-4403-B40D-635C25A11057}.Release|x64.ActiveCfg = Release|x64
 		{FF4DA28E-CCAD-4403-B40D-635C25A11057}.Release|x64.Build.0 = Release|x64
-		{A3BAEC71-F1B8-4A73-A1DB-AD0E92F9541D}.Debug|x64.ActiveCfg = Debug|x64
-		{A3BAEC71-F1B8-4A73-A1DB-AD0E92F9541D}.Debug|x64.Build.0 = Debug|x64
-		{A3BAEC71-F1B8-4A73-A1DB-AD0E92F9541D}.Release|x64.ActiveCfg = Release|x64
-		{A3BAEC71-F1B8-4A73-A1DB-AD0E92F9541D}.Release|x64.Build.0 = Release|x64
+		{955D0A3F-9782-4138-AAC4-908623F8CDA8}.Debug|x64.ActiveCfg = Debug|x64
+		{955D0A3F-9782-4138-AAC4-908623F8CDA8}.Debug|x64.Build.0 = Debug|x64
+		{955D0A3F-9782-4138-AAC4-908623F8CDA8}.Release|x64.ActiveCfg = Release|x64
+		{955D0A3F-9782-4138-AAC4-908623F8CDA8}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {105B0624-426F-48DA-9F2E-E12381ABE56F}
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,6 @@
 #include "GameStateMgr.h"
 #include "GameState_Pong.h"
+#include "GameState_Win.h"
 
 unsigned int gGameStateInit = 0;
 unsigned int gGameStateCurr = 0;
@@ -30,6 +31,16 @@ void GameStateMgrUpdate()
 		GameStateFree   = GameState_PongFree;
 		GameStateUnload = GameState_PongUnload;
 		break;
+
+	case GS_WIN:
+		GameStateLoad   = GameState_WinLoad;
+		GameStateInit   = GameState_WinInit;
+		GameStateUpdate = GameState_WinUpdate;
+		GameStateDraw   = GameState_WinDraw;
+		GameStateFree   = GameState_WinFree;
+		GameStateUnload = GameState_WinUnload;
+		break;
+
 	default:
 		AE_ASSERT_MESG(false, "Invalid game state.");
 		break;

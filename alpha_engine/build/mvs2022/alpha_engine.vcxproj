@@ -176,6 +176,7 @@
     <ClInclude Include="..\..\include\AEFrameRateController.h" />
     <ClInclude Include="..\..\include\AEGraphics.h" />
     <ClInclude Include="..\..\include\AEInput.h" />
+    <ClInclude Include="..\..\include\AEParticle.h" />
     <ClInclude Include="..\..\include\AELineSegment2.h" />
     <ClInclude Include="..\..\include\AEMath.h" />
     <ClInclude Include="..\..\include\AEMtx33.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="..\..\src\AEFrameRateController.cpp" />
     <ClCompile Include="..\..\src\AEGraphics.cpp" />
     <ClCompile Include="..\..\src\AEInput.cpp" />
+    <ClCompile Include="..\..\src\AEParticle.cpp" />
     <ClCompile Include="..\..\src\AELineSegment2.cpp" />
     <ClCompile Include="..\..\src\AEMath.cpp" />
     <ClCompile Include="..\..\src\AEMtx33.cpp" />

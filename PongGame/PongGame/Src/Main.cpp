@@ -119,7 +119,7 @@ static void AEGameTick(void)
 
 int main(int /*argc*/, char* /*argv*/[])
 {
-	AESysInit(nullptr, 1, 800, 600, 1, 60, false, NULL);
+	AESysInit(nullptr, 1, 1280, 720, 1, 60, false, NULL);
 	GameStartup();
 	emscripten_set_main_loop(AEGameTick, 0, 1);
 	return 0;
@@ -145,7 +145,7 @@ int WINAPI WinMain(HINSTANCE instanceH, HINSTANCE prevInstanceH, LPSTR command_l
 		SetCurrentDirectoryW(exeDir);
 	}
 
-	AESysInit(instanceH, show, 800, 600, 1, 60, false, NULL);
+	AESysInit(instanceH, show, 1280, 720, 1, 60, false, NULL);
 	GameStartup();
 
 	while (gGameStateCurr != GS_QUIT)
