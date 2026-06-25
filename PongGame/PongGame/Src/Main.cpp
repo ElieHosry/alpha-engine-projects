@@ -16,7 +16,7 @@ static void GameStartup()
 	AESysSetWindowTitle("Pong");
 	AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
 	gFontId = AEGfxCreateFont("../Resources/Fonts/Arial_Italic.ttf", 24);
-	GameStateMgrInit(GS_PONG);
+	GameStateMgrInit(GS_MENU);
 }
 
 static void GameShutdown()

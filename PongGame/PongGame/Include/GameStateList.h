@@ -3,7 +3,8 @@
 
 enum
 {
-	GS_PONG = 0,
+	GS_MENU = 0,
+	GS_PONG,
 
 	// Reserved — do not change order
 	GS_RESTART,

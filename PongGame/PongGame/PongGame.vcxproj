@@ -109,6 +109,7 @@ if exist "$(AERoot)extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(AERoot)extern\SDL2\l
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Include\GameState_Menu.h" />
     <ClInclude Include="Include\GameState_Pong.h" />
     <ClInclude Include="Include\GameState_Win.h" />
     <ClInclude Include="Include\GameStateList.h" />
@@ -116,6 +117,7 @@ if exist "$(AERoot)extern\SDL2\lib\x64\SDL2.dll" copy /Y "$(AERoot)extern\SDL2\l
     <ClInclude Include="Include\Main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\GameState_Menu.cpp" />
     <ClCompile Include="Src\GameState_Pong.cpp" />
     <ClCompile Include="Src\GameStateMgr.cpp" />
     <ClCompile Include="Src\GameState_Win.cpp" />

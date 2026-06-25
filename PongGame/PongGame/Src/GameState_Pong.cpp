@@ -107,7 +107,7 @@ void GameState_PongUpdate()
 {
     if (AEInputCheckTriggered(AEVK_ESCAPE))
     {
-        gGameStateNext = GS_QUIT;
+        gGameStateNext = GS_MENU;
         return;
     }
 

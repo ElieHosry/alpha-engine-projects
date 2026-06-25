@@ -1,4 +1,5 @@
 #include "GameStateMgr.h"
+#include "GameState_Menu.h"
 #include "GameState_Pong.h"
 #include "GameState_Win.h"
 
@@ -23,6 +24,15 @@ void GameStateMgrUpdate()
 {
 	switch (gGameStateCurr)
 	{
+	case GS_MENU:
+		GameStateLoad   = GameState_MenuLoad;
+		GameStateInit   = GameState_MenuInit;
+		GameStateUpdate = GameState_MenuUpdate;
+		GameStateDraw   = GameState_MenuDraw;
+		GameStateFree   = GameState_MenuFree;
+		GameStateUnload = GameState_MenuUnload;
+		break;
+
 	case GS_PONG:
 		GameStateLoad   = GameState_PongLoad;
 		GameStateInit   = GameState_PongInit;

@@ -22,6 +22,13 @@
                 font-size: 14px; color: #9a9a9a; pointer-events: none; z-index: 5; }
     progress  { position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
                 width: 320px; max-width: 70vw; z-index: 5; }
+    /* START button — touch devices only, shown by C++ during menu state */
+    #btn-start {
+      position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%);
+      padding: 16px 64px; font-size: 22px; font-family: system-ui, sans-serif;
+      background: #111; color: #fff; border: 2px solid #fff; border-radius: 8px;
+      cursor: pointer; z-index: 10; touch-action: manipulation; display: none;
+    }
     /* RESTART button — touch devices only, shown by C++ when win state is entered */
     #btn-restart {
       position: fixed; bottom: 24px; right: 24px;
@@ -29,7 +36,7 @@
       background: #111; color: #fff; border: 2px solid #fff; border-radius: 8px;
       cursor: pointer; z-index: 10; touch-action: manipulation; display: none;
     }
-    @media (pointer: fine) { #btn-restart { display: none !important; } }
+    @media (pointer: fine) { #btn-start, #btn-restart { display: none !important; } }
   </style>
 </head>
 <body>
@@ -38,6 +45,7 @@
     <progress id="progress" value="0" max="100"></progress>
     <canvas id="canvas" width="1280" height="720" tabindex="-1"
             oncontextmenu="event.preventDefault()"></canvas>
+    <button id="btn-start">START</button>
     <button id="btn-restart">RESTART</button>
   </div>
 
@@ -86,6 +94,12 @@
       canvas.addEventListener('pointermove', function (e) {
         if (!e.buttons) return;
         sendTargetY(e);
+      });
+
+      // START button — calls StartGame() exported from C++ menu state.
+      document.getElementById('btn-start').addEventListener('pointerdown', function (e) {
+        e.preventDefault();
+        Module.ccall('StartGame', null, [], []);
       });
 
       // RESTART button — calls DoRestart() exported from C++ win state.
