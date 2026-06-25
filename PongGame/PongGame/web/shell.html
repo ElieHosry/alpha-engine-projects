@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Pong (Alpha Engine / WebGL)</title>
+  <link rel="icon" href="data:,">
+  <!-- iOS "Add to Home Screen": launches chromeless (no Safari toolbars) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pong">
+  <meta name="mobile-web-app-capable" content="yes">
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; color: #ddd;
+                 font-family: system-ui, sans-serif; overflow: hidden; }
+    /* Fill the whole viewport and center the canvas. 100dvh tracks the live
+       visible height on mobile (toolbars / orientation changes). */
+    .wrap { display: flex; align-items: center; justify-content: center;
+            width: 100vw; height: 100vh; height: 100dvh; padding: 0; box-sizing: border-box; }
+    /* Backing buffer stays 800x600; fit inside BOTH width and height so the 4:3
+       game letterboxes instead of overflowing off-screen in landscape. */
+    canvas { background: #000; display: block; image-rendering: pixelated; outline: none;
+             max-width: 100vw; max-height: 100vh; max-height: 100dvh;
+             touch-action: none; /* hand all pointer events to our JS handler */ }
+    /* Loading text/bar overlay - taken out of layout so they don't shrink the canvas. */
+    #status   { position: fixed; top: 8px; left: 0; right: 0; text-align: center;
+                font-size: 14px; color: #9a9a9a; pointer-events: none; z-index: 5; }
+    progress  { position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
+                width: 320px; max-width: 70vw; z-index: 5; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="status">Loading…</div>
+    <progress id="progress" value="0" max="100"></progress>
+    <!-- The engine requests an 800x600 window in AESysInit -->
+    <canvas id="canvas" width="800" height="600" tabindex="-1"
+            oncontextmenu="event.preventDefault()"></canvas>
+  </div>
+
+  <script>
+    var statusEl = document.getElementById('status');
+    var progressEl = document.getElementById('progress');
+    var Module = {
+      canvas: (function () { return document.getElementById('canvas'); })(),
+      print:    function (text) { console.log(text); },
+      printErr: function (text) { console.error(text); },
+      setStatus: function (text) {
+        statusEl.textContent = text;
+        if (!text) progressEl.style.display = 'none';
+      },
+      monitorRunDependencies: function () {}
+    };
+    Module.setStatus('Downloading…');
+    window.onerror = function () { Module.setStatus('Exception thrown - see console'); };
+  </script>
+
+  <script>
+    // ---- Swipe-to-move touch controls ----
+    // On mobile, drag up/down on the canvas to move the left paddle (W / S keys).
+    // We dispatch synthetic KeyboardEvent so SDL's keyboard state updates exactly
+    // as if the user pressed a real key — no C++ changes needed.
+    (function () {
+      var canvas = document.getElementById('canvas');
+      var activeKey = null; // 'w' | 's' | null — currently held synthetic key
+      var lastY = 0;
+      var tracking = false;
+
+      var W_DEF = { key: 'w', code: 'KeyW', keyCode: 87 };
+      var S_DEF = { key: 's', code: 'KeyS', keyCode: 83 };
+
+      function dispatchKey(type, def) {
+        var ev = new KeyboardEvent(type, {
+          key: def.key, code: def.code,
+          keyCode: def.keyCode, which: def.keyCode,
+          bubbles: true, cancelable: true
+        });
+        window.dispatchEvent(ev); // SDL registers its keyboard listener on window
+      }
+
+      // Transition to a new held key (or null = release all).
+      // Only dispatches events when the state actually changes.
+      function setKey(newKey) {
+        if (newKey === activeKey) return;
+        if (activeKey === 'w') dispatchKey('keyup',   W_DEF);
+        if (activeKey === 's') dispatchKey('keyup',   S_DEF);
+        activeKey = newKey;
+        if (newKey  === 'w') dispatchKey('keydown', W_DEF);
+        if (newKey  === 's') dispatchKey('keydown', S_DEF);
+      }
+
+      canvas.addEventListener('pointerdown', function (e) {
+        e.preventDefault();
+        canvas.setPointerCapture(e.pointerId); // track finger even outside canvas
+        lastY = e.clientY;
+        tracking = true;
+      });
+
+      canvas.addEventListener('pointermove', function (e) {
+        if (!tracking) return;
+        var deltaY = e.clientY - lastY;
+        lastY = e.clientY;
+        // Dead zone of ±4px prevents jitter when finger is nearly stationary.
+        // Within the dead zone we keep the current direction rather than releasing,
+        // so the paddle doesn't stutter during slow/imprecise drags.
+        if      (deltaY < -4) setKey('w');
+        else if (deltaY >  4) setKey('s');
+        // else: inside dead zone — hold current state
+      });
+
+      canvas.addEventListener('pointerup',     function () { tracking = false; setKey(null); });
+      canvas.addEventListener('pointercancel', function () { tracking = false; setKey(null); });
+    })();
+  </script>
+  {{{ SCRIPT }}}
+</body>
+</html>
